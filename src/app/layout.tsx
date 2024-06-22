@@ -19,10 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="py-4 px-6 container mx-auto">
-          <Header />
-          {children}
-        </main>
+        <Header />
+        {children}
       </body>
     </html>
   );
