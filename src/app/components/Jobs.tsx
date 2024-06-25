@@ -1,4 +1,5 @@
 import React from 'react'
+import JobRow from './JobRow'
 
 export default function Jobs() {
   return (
@@ -7,10 +8,10 @@ export default function Jobs() {
         <h2 className='font-bold mb-4 '>Recent Jobs</h2>
 
         <div className="flex flex-col gap-4 ">
-          <div className="bg-white p-6 rounded-lg shadow-sm ">Backend Engineer</div>
-          <div className="bg-white p-6 rounded-lg shadow-sm ">CI\CD Engineer.</div>
-          <div className="bg-white p-6 rounded-lg shadow-sm ">Code Tester</div>
-          <div className="bg-white p-6 rounded-lg shadow-sm ">Fullstack web developer</div>
+            <JobRow />
+            <JobRow />
+            <JobRow />
+            <JobRow />
         </div>
       </div>
     </div>
