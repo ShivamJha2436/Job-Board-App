@@ -18,7 +18,6 @@ export default async function Home() {
   const signUpUrl = await getSignUpUrl();
 
   
-  
   return (
     <>
     <Hero/>
