@@ -7,10 +7,19 @@ import { createCompany } from "../actions/workosActions";
 
 export default async function NewListingPage() {
 
+
+
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
 
 
   const { user } = await getUser();
+
+  async function handleNewCompanyFormSubmit(data: FormData) {
+    "use server";
+    if (user) {
+      await createCompany(data.get('newCompanyName') as string, user.id);
+    }
+  }
 
   if (!user) {
     return (
@@ -37,7 +46,7 @@ export default async function NewListingPage() {
         <h2 className="text-lg mt-6">Create new company</h2>
         <p className="text-gray-500 text-sm mb-2">To create a job listing you need to register a company</p>
         <form
-          action={createCompany}
+          action={handleNewCompanyFormSubmit}
           className="flex gap-2">
           <input
             name="newCompanyName"
