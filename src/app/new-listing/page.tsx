@@ -7,8 +7,6 @@ import { createCompany } from "../actions/workosActions";
 
 export default async function NewListingPage() {
 
-
-
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
 
 
@@ -32,7 +30,6 @@ export default async function NewListingPage() {
   const organizationMemberships = await workos.userManagement.listOrganizationMemberships({
     userId: user.id,
   });
-
 
   return (
     <div className="container">
