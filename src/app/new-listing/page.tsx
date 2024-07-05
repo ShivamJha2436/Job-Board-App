@@ -1,23 +1,16 @@
 "use server";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getUser } from "@workos-inc/authkit-nextjs";
 import { AutoPaginatable, Organization, OrganizationMembership, WorkOS } from "@workos-inc/node";
 import { createCompany } from "../actions/workosActions";
+import Link from "next/link";
 
 export default async function NewListingPage() {
 
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
 
-
   const { user } = await getUser();
-
-  async function handleNewCompanyFormSubmit(data: FormData) {
-    "use server";
-    if (user) {
-      await createCompany(data.get('newCompanyName') as string, user.id);
-    }
-  }
 
   if (!user) {
     return (
@@ -39,22 +32,12 @@ export default async function NewListingPage() {
         <div className="border border-blue-200 bg-blue-50 p-4 rounded-md">
           No companies found assigned to your account
         </div>
-
-        <h2 className="text-lg mt-6">Create new company</h2>
-        <p className="text-gray-500 text-sm mb-2">To create a job listing you need to register a company</p>
-        <form
-          action={handleNewCompanyFormSubmit}
-          className="flex gap-2">
-          <input
-            name="newCompanyName"
-            className="p-2 border border-gray-400 rounded-md "
-            type="text"
-            placeholder="Company name" />
-          <button type="submit" className="flex gap-2 bg-gray-200 px-4 py-2 rounded-md">
-            Create company
-            <FontAwesomeIcon className="h-4 mt-1 items-center" icon={faPlusCircle} />
-          </button>
-        </form>
+        <Link
+          className="inline-flex gap-2 items-center bg-gray-200 px-4 py-2 rounded-md mt-6"
+          href={"/new-company"}>
+          Create a new company
+          <FontAwesomeIcon className="h-4" icon={faArrowRight} />
+        </Link>
       </div>
     </div>
   );
