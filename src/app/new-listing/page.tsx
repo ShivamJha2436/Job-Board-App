@@ -30,7 +30,7 @@ export default async function NewListingPage() {
   const organizationsNames:{[key: string]: string} = {};
   for(const activeMembership of activeOrganizationMemberships) {
     const organization = await workos.organizations.getOrganization(activeMembership.organizationId);
-    organizationsNames[organizationId] = organization.name;
+    organizationsNames[organization.id] = organization.name;
   }
 
   return (
