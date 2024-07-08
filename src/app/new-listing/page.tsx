@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 "use server";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,18 +25,27 @@ export default async function NewListingPage() {
     userId: user.id,
   });
 
+  // Filter out the active organization memberships
+  const activeOrganizationMemberships = organizationMemberships.data.filter(om => om.status === 'active');
+  const organizationsNames:{[key: string]: string} = {};
+  for(const activeMembership of activeOrganizationMemberships) {
+    const organization = await workos.organizations.getOrganization(activeMembership.organizationId);
+    organizationsNames[organizationId] = organization.name;
+  }
+
   return (
     <div className="container">
+      {JSON.stringify(organizationsNames)}
       <div>
         <h2 className="text-lg mt-6">Your Companies</h2>
         <p className="text-gray-500 text-sm mb-2">Select a company to create a job for</p>
         {organizationMemberships.data.filter(om => om.status === 'active').map(om => (
           <div>
-            {om.organizationId}
-          </div>
+            {/* {workos.} */}
+          </div>  
         ))}
-
-        {organizationMemeberships.data.length === 0 && (
+        
+        {organizationMemberships.data.length === 0 && (
           <div className="border border-blue-200 bg-blue-50 p-4 rounded-md">
             No companies found assigned to your account
           </div>
