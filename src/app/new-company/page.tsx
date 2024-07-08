@@ -27,7 +27,7 @@ export default async function NewCompanyPage() {
           className="p-2 border border-gray-400 rounded-md "
           type="text"
           placeholder="Company name" />
-        <button type="submit" className="flex gap-2 bg-gray-200 px-4 py-2 rounded-md">
+        <button type="submit" className="flex gap-2 bg-gray-200 px-4 py-2 rounded-md font-semibold">
           Create company
           <FontAwesomeIcon className="h-4 mt-1 items-center" icon={faPlusCircle} />
         </button>

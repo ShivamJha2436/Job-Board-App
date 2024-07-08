@@ -10,7 +10,6 @@ import Link from "next/link";
 export default async function NewListingPage() {
 
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
-
   const { user } = await getUser();
 
   if (!user) {
@@ -42,8 +41,9 @@ export default async function NewListingPage() {
           <div className="border inline-block rounded-md ">
             {Object.keys(organizationsNames).map(orgId => (
               <Link href={'/new-listing/' + orgId}
-                className="p-2 block">
+                className="p-2 px-4 flex gap-2 items-center">
                 {organizationsNames[orgId]}
+                <FontAwesomeIcon className="h-4" icon={faArrowRight} />
               </Link>
             ))}
           </div>
