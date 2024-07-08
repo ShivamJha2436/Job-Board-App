@@ -1,5 +1,5 @@
 "use server";
-import { faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getUser } from "@workos-inc/authkit-nextjs";
 import { AutoPaginatable, Organization, OrganizationMembership, WorkOS } from "@workos-inc/node";
@@ -29,9 +29,17 @@ export default async function NewListingPage() {
       <div>
         <h2 className="text-lg mt-6">Your Companies</h2>
         <p className="text-gray-500 text-sm mb-2">Select a company to create a job for</p>
-        <div className="border border-blue-200 bg-blue-50 p-4 rounded-md">
-          No companies found assigned to your account
-        </div>
+        {organizationMemberships.data.filter(om => om.status === 'active').map(om => (
+          <div>
+            {om.organizationId}
+          </div>
+        ))}
+
+        {organizationMemeberships.data.length === 0 && (
+          <div className="border border-blue-200 bg-blue-50 p-4 rounded-md">
+            No companies found assigned to your account
+          </div>
+        )}
         <Link
           className="inline-flex gap-2 items-center bg-gray-200 px-4 py-2 rounded-md mt-6"
           href={"/new-company"}>

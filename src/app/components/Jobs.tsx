@@ -12,6 +12,8 @@ export default function Jobs() {
             <JobRow />
             <JobRow />
             <JobRow />
+            <JobRow />
+            <JobRow />
         </div>
       </div>
     </div>
