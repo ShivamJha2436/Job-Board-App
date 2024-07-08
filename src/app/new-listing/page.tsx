@@ -26,7 +26,7 @@ export default async function NewListingPage() {
 
   // Filter out the active organization memberships
   const activeOrganizationMemberships = organizationMemberships.data.filter(om => om.status === 'active');
-  const organizationsNames: { [key: string]: string } = {};
+  const organizationsNames:{[key: string]: string } = {};
   for (const activeMembership of activeOrganizationMemberships) {
     const organization = await workos.organizations.getOrganization(activeMembership.organizationId);
     organizationsNames[organization.id] = organization.name;
