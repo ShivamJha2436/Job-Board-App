@@ -1,40 +1,33 @@
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons/faPlusCircle";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { getUser } from "@workos-inc/authkit-nextjs";
-import { createCompany } from "../actions/workosActions";
+import {createCompany} from "@/app/actions/workosActions";
+import {getUser} from "@workos-inc/authkit-nextjs";
 
-// This is the new company page
 export default async function NewCompanyPage() {
-
-  // Get the user
   const {user} = await getUser();
-
-  // Handle the form submission
-  async function handleNewCompanyFormSubmit(data: FormData) {       
-    "use server";
+  async function handleNewCompanyFormSubmit(data:FormData) {
+    'use server';
     if (user) {
       await createCompany(data.get('newCompanyName') as string, user.id);
     }
   }
-  if(!user){
-    "Login to use this page;"
+
+  if (!user) {
+    'Login to use this page';
   }
 
   return (
     <div className="container">
-      <h2 className="text-lg mt-6">Create new company</h2>
-      <p className="text-gray-500 text-sm mb-2">To create a job listing you need to register a company</p>
+      <h2 className="text-lg mt-6">Create a new company</h2>
+      <p className="text-gray-500 text-sm mb-2">To create a job listing your first need to register a company</p>
       <form
         action={handleNewCompanyFormSubmit}
         className="flex gap-2">
         <input
           name="newCompanyName"
-          className="p-2 border border-gray-400 rounded-md "
+          className="p-2 border border-gray-400 rounded-md"
           type="text"
-          placeholder="Company name" />
-        <button type="submit" className="flex gap-2 bg-gray-200 px-4 py-2 rounded-md font-semibold">
+          placeholder="company name"/>
+        <button type="submit" className="flex gap-2 items-center bg-gray-200 px-4 py-2 rounded-md">
           Create company
-          <FontAwesomeIcon className="h-4 mt-1 items-center" icon={faPlusCircle} />
         </button>
       </form>
     </div>
