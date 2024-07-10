@@ -3,8 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getUser } from "@workos-inc/authkit-nextjs";
 import { createCompany } from "../actions/workosActions";
 
+// This is the new company page
 export default async function NewCompanyPage() {
+
+  // Get the user
   const {user} = await getUser();
+
+  // Handle the form submission
   async function handleNewCompanyFormSubmit(data: FormData) {       
     "use server";
     if (user) {

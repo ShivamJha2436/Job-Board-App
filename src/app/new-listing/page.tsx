@@ -9,9 +9,11 @@ import Link from "next/link";
 
 export default async function NewListingPage() {
 
+  // Initialize the WorkOS SDK
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
   const { user } = await getUser();
 
+  // Check if the user is logged in
   if (!user) {
     return (
       <div className="container">
@@ -20,6 +22,7 @@ export default async function NewListingPage() {
     );
   }
 
+  // Check if the user has any organization memberships
   const organizationMemberships = await workos.userManagement.listOrganizationMemberships({
     userId: user.id,
   });
@@ -48,7 +51,6 @@ export default async function NewListingPage() {
             ))}
           </div>
         </div>
-
         {organizationMemberships.data.length === 0 && (
           <div className="border border-blue-200 bg-blue-50 p-4 rounded-md">
             No companies found assigned to your account
