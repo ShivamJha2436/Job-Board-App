@@ -1,9 +1,11 @@
 import { getUser } from "@workos-inc/authkit-nextjs";
-import {WorkOS} from "@workos-inc/node";
+import { WorkOS } from "@workos-inc/node";
+import '@radix-ui/themes/styles.css';
+import { TextField, Theme } from '@radix-ui/themes';
 
-// 
+
 type PageProps = {
-  params:{
+  params: {
     orgId: string;
   }
 };
@@ -11,18 +13,26 @@ type PageProps = {
 export default async function NewListingForOrgPage(props: PageProps) {
   const { user } = await getUser();
   const workos = new WorkOS(process.env.WORKOS_API_KEY);
-  if(!user) return "Login to use this page";
+  if (!user) {
+    return "Login to use this page";
+  }
   const orgId = props.params.orgId;
-  const oms = await workos.userManagement.listOrganizationMemberships({userId: user.id, organizationId: orgId});
-  const hasAccess = oms
+  const oms = await workos.userManagement.listOrganizationMemberships({ userId: user.id, organizationId: orgId });
+  const hasAccess = oms.data.length > 0;
+
+  if (!hasAccess) {
+    return "You do not have access to this organization";
+  }
+
 
   return (
-    <form
-      action=""
-      className="container mt-6"
-    >
-      {JSON.stringify(props)}
-      New job form here
-    </form>
+    <Theme>
+      <form
+        action=""
+        className="container mt-6"
+      >
+        <TextField.Root placeholder="Job Title"/>
+      </form>
+    </Theme>
   );
 }
