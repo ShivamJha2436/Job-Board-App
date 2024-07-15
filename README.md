@@ -31,7 +31,8 @@ This is a job board web application built with Next.js, AuthKit, Tailwind CSS, a
 ## Screenshots
 
 ### Home Page
-![Home Page](./images/home-page.png)
+![Home Page]![Screenshot 2024-06-28 102917](https://github.com/user-attachments/assets/b5de28bb-f61d-497f-beac-40d44feb5010)
+
 
 ### Job Listings
 ![Job Listings](./images/job-listings.png)
