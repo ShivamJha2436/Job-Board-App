@@ -29,19 +29,19 @@ This is a job board web application built with Next.js, AuthKit, Tailwind CSS, a
 - **Database:** MongoDB
 
 ## Screenshots
+### SignIn/LogIn
+![Screenshot (485)](https://github.com/user-attachments/assets/473bb9d5-7e78-49a4-8065-98734123bb7f)
 
 ### Home Page
-![Home Page]![Screenshot 2024-06-28 102917](https://github.com/user-attachments/assets/b5de28bb-f61d-497f-beac-40d44feb5010)
-
+[Screenshot 2024-06-28 102917](https://github.com/user-attachments/assets/b5de28bb-f61d-497f-beac-40d44feb5010)
 
 ### Job Listings
-![Job Listings](./images/job-listings.png)
+[Screenshot (484)](https://github.com/user-attachments/assets/93475e08-8fff-4e3a-a11e-e2d2a4f3c7d1)
+
 
 ### Job Details
-![Job Details](./images/job-details.png)
+[Screenshot (486)](https://github.com/user-attachments/assets/047fb14b-cf7c-4524-818b-d8717324caab)
 
-### Post a Job
-![Post a Job](./images/post-job.png)
 
 ## Installation
 
